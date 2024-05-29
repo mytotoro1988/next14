@@ -3,7 +3,7 @@ import prisma from "@/lib/db";
 import { deletePost } from "@/actions/actions";
 export default async function PostsList() {
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  const posts = await prisma.post.findMany();
+  const posts = await prisma.post.findMany({ where: { show: true } });
   return (
     <ul>
       {posts.map((post) => (

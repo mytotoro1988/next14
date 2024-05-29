@@ -13,14 +13,13 @@ export async function createPost(formData: FormData) {
 
   const title = formData.get("title") as string;
   const body = formData.get("body") as string;
-  const show = formData.get("show") as string;
   console.log(title);
   console.log(body);
   await prisma.post.create({
     data: {
       title,
       body,
-      show,
+      show: true,
     },
   });
 
@@ -38,9 +37,12 @@ export async function deletePost(formData: FormData) {
   const id = formData.get("id") as string;
   console.log(id);
 
-  await prisma.post.delete({
+  await prisma.post.update({
     where: {
       id: +id,
+    },
+    data: {
+      show: false,
     },
   });
 
