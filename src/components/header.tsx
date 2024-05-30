@@ -17,6 +17,10 @@ const navLink = [
     href: "/create-post",
     label: "Create post",
   },
+  {
+    href: "/sign-up",
+    label: "Signup",
+  },
 ];
 
 export default function Header() {

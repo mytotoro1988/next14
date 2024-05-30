@@ -13,8 +13,6 @@ export async function createPost(formData: FormData) {
 
   const title = formData.get("title") as string;
   const body = formData.get("body") as string;
-  console.log(title);
-  console.log(body);
   await prisma.post.create({
     data: {
       title,
@@ -48,4 +46,17 @@ export async function deletePost(formData: FormData) {
 
   //revalidate
   revalidatePath("/posts");
+}
+
+export async function signUp(formData: FormData) {
+  
+  const username = formData.get("username") as string;
+  const password = formData.get("password") as string;
+  await prisma.user.create({
+    data: {
+      username,
+      password
+    },
+  });
+
 }
